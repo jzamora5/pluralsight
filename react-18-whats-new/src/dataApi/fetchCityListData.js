@@ -1,30 +1,25 @@
-import { fetchCities } from '../data/cities'
+import { fetchCities } from "../data/cities";
 
 export function fetchCityListData(displayCount) {
-
-    const cityPromise = fetchCities(displayCount)
-
+    const cityPromise = fetchCities(displayCount);
     return {
-        cities: wrapPromise(cityPromise)
-    }
-
+        cities: wrapPromise(cityPromise),
+    };
 }
 
 function wrapPromise(promise) {
-    let status = "pending"
+    let status = "pending";
     let result;
-
     let suspender = promise.then(
         (r) => {
-            status = "success"
-            result = r
+            status = "success";
+            result = r;
         },
         (e) => {
-            status = "error"
-            result = e
+            status = "error";
+            result = e;
         }
     );
-
     return {
         read() {
             if (status === "pending") {
@@ -34,6 +29,6 @@ function wrapPromise(promise) {
             } else if (status === "success") {
                 return result;
             }
-        }
-    }
+        },
+    };
 }
