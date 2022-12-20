@@ -5,6 +5,7 @@ import { DisplayCountProvider } from "./contexts/DisplayCountContext";
 import CityDisplayCount from "./ui/CityDisplayCount";
 
 import CityList from "./ui/CityList";
+import CityDetail from "./ui/CityDetail";
 
 const displayCount = 5;
 
@@ -14,7 +15,11 @@ function App() {
       <CityDisplayCount />
       <CityListStoreProvider>
         <Suspense fallback={<div>Loading...</div>}>
-          <CityList />
+          <CityList>
+            <Suspense fallback={<div>Loading...</div>}>
+              <CityDetail />
+            </Suspense>
+          </CityList>
         </Suspense>
       </CityListStoreProvider>
     </DisplayCountProvider>
