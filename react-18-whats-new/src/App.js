@@ -7,7 +7,7 @@ import CityDisplayCount from "./ui/CityDisplayCount";
 import CityList from "./ui/CityList";
 import CityDetail from "./ui/CityDetail";
 
-const displayCount = 5;
+const displayCount = 100;
 
 function App() {
   return (
